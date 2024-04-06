@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouts</title>
+    <style>
+        nav {
+            background-color: rgb(248, 196, 117);
+        }
+        #aside {
+            background-color: lightgray;
+            float: right;
+            font-style: italic;
+            width: 30%;
+            padding: 10px;
+        }
+        header, footer {
+            background-color: lightgreen;
+            margin: 0;
+            padding: 10px 0;
+        }
+        section {
+            background-color: lightblue;
+            display: table;
+            width: 100%;
+        }
+        article {
+            background-color: lightpink;
+            padding: 10px 0;
+            margin: 0 10px 0 10px;
+        }
+        nav li {
+            float: left;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(82, 213, 236);
+        }
+        nav li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+            padding: 14px 16px;
+        }
+        nav li a:hover {
+            background-color: rgb(118, 238, 71);
+        }
+        footer li a {
+            text-decoration: none;
+        }
+        footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        p {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+        <nav>
+            <ul>
+                <li  style="padding: 14px 16px;"><b>Navigation</b></li>
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#body">Body</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="content">
+            <section id="intro">
+                <h2>Intro Section</h2>
+                <p>This is the introduction section.</p>
+                <p>It is a generic container for grouping related content together. It doesn't imply any specific meaning or hierarchy, but it's useful for structuring content.</p>
+                <p>It's often used to divide a webpage into different thematic sections.</p>
+            </section>
+        
+            <section id="body">
+                <h2>Body Section</h2>
+                <p>This is the Body section.</p>
+                <article>
+                    <h3>Article 1</h3>
+                    <p>This is the first article.</p>
+                    <p>It represents a self-contained piece of content that could potentially be distributed and reused independently. It often corresponds to a blog post, a news article, a forum post, a comment, etc.</p>
+                    <p>It's used when the content makes sense on its own and could be syndicated or aggregated.</p>
+                </article>
+                
+                <article>
+                    <aside id="aside">
+                        <h4>Aside</h4>
+                        <p>represents content that is tangentially related to the content around it, often presented as a sidebar or callout box.</p>
+                        <p>It's typically used for content like sidebars, advertisements, pull quotes, etc.</p>
+                        <p>It should not contain essential content. It's additional or supporting content.</p>
+                    </aside>
+                    <h3>Article 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci, deserunt facere! Illum sit unde minus magni facilis ab, aspernatur sunt inventore error quaerat tempora adipisci, incidunt ullam aliquam assumenda impedit!</p>
+                    <img src="/image/w3s.gif" alt="scream_img" width="550px">
+                </article>
+            </section>
+        
+            <section id="conclusion">
+                <h2>Conclusion Section</h2>
+                <p>This is the Conclusion section.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolores recusandae soluta sequi impedit id quo, blanditiis quis molestias beatae provident itaque repellendus dolorem eius, aperiam numquam a facilis architecto?</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <h1>Footer</h1>
+        <ul >
+            <li><a href="#intro">Intro</a></li>
+        </ul>
+        
+    </footer>
+</body>
+</html>

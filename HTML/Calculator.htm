@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button {
+            width: 200px;
+            height: 100px;
+            font-size: 30px;
+            background-color: rgb(42, 204, 204);
+        }
+        button:hover {
+            background-color: rgb(25, 189, 107);
+        }
+        
+    </style>
+    <script>
+
+        const display = (x) => {
+            document.getElementById("result").value += x;
+        }
+        const Clear = () => {
+            document.getElementById("result").value = "";
+        }
+        const Calculate = () => {
+            document.getElementById("result").value = eval(document.getElementById("result").value);
+        }
+
+        const Delete = () => {
+            e = document.getElementById("result").value
+            let k = e[e.length - 1];
+            document.getElementById("result").value = document.getElementById("result").value.slice(0, -1);
+        }
+
+        const add = () => {
+                document.getElementById("result").value += "+";
+        }
+        const subtract = () => {
+                 document.getElementById("result").value += "-";
+        }
+        const multiply = () => {
+            const r = document.getElementById("result").value
+            const fc = r.charAt(0)
+            if (fc != "" && fc != "+" && fc != "-") {
+                document.getElementById("result").value += "*";
+            } 
+        }
+        const divide = () => {
+            const r = document.getElementById("result").value
+            const fc = r.charAt(0)
+            if (fc != "" && fc != "+" && fc != "-") {
+                document.getElementById("result").value += "/";
+            } 
+        }
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center; ">Basic Calculator</h1>
+    <div class="Calc" style="border: solid 2px ; margin: auto 60px ;" >
+        <div class="Bttn" style="margin: 10px 5px">
+            <table>
+                <tr ><input type="text" id="result" readonly style="width: 805px; height: 100px; text-align: right; font-size: 70px; margin-left: 2px;"></tr>
+                <tr>
+                    <td><button onclick="Clear()">C</button></td>
+                    <td><button onclick="divide()">/</button></td>
+                    <td><button onclick="multiply()">*</button></td>
+                    <td><button onclick="subtract()">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display('7')">7</button></td>
+                    <td><button onclick="display('8')">8</button></td>
+                    <td><button onclick="display('9')">9</button></td>  
+
+                    <td rowspan="2"><button onclick="add()" style="height: 205px;">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display('4')">4</button></td>
+                    <td><button onclick="display('5')">5</button></td>
+                    <td><button onclick="display('6')">6</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display('1')">1</button></td>
+                    <td><button onclick="display('2')">2</button></td>
+                    <td><button onclick="display('3')">3</button></td>
+
+                    <td rowspan="2"><button onclick="Calculate()" style="height: 205px;">Enter</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="display('0')">0</button></td>
+                    <td><button onclick="display('.')">.</button></td>
+                    <td><button onclick="Delete()">Del</button></td>
+                </tr>
+            </table>
+        </div>
+    
+    </div>
+</body>
+</html>

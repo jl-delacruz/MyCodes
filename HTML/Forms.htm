@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        fieldset {
+            width: 50%;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            //limit date to today
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0');
+            let yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("bdate").setAttribute("max", today);
+        }
+        const preventNumbers = (event) => {
+        // Get the key code of the pressed key
+        var keyCode = event.keyCode;
+
+        // Check if the key pressed is a number
+        if (keyCode >= 48 && keyCode <= 57) {
+            // If it's a number, prevent the default behavior
+            event.preventDefault();
+        }
+        }
+                
+    </script>
+</head>
+<body>
+    <h1>Forms</h1>
+        <form action="https://httpbin.org/post" method="post" target="_blank">
+            <div class="form1">
+                <fieldset>
+                    <legend>Personal Info</legend>
+                    <label for="fname">First Name:</label>
+                    <input type="text" name="fname" onkeypress="preventNumbers(event)"> <br>
+        
+                    <label for="lname">Last Name:</label>
+                    <input type="text" name="lname" onkeypress="preventNumbers(event)"> <br>
+        
+                    <label for="mname">Middle Name:</label>
+                    <input type="text" name="mname" onkeypress="preventNumbers(event)" maxlength="1" style="width: 10px;"> <br>
+                    
+                    <label for="age">Age:</label>
+                    <input type="number" name="age" min="1" style="width: 30px;"> <br>
+                    
+                    <label for="bdate">Birth Date:</label>
+                    <input type="date" name="bdate" min="2000-01-01" id="bdate"> <br>
+        
+                    <input type="radio" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" value="female">
+                    <label for="female">Female</label> <br>
+        
+                    <label for="email">Email:</label>
+                    <input type="email" name="email"> <br>
+        
+                    <label for="password">Password:</label>
+                    <input type="password" name="password"> <br>
+        
+                    <label for="country">Country:</label>
+                    <input list="country" name="country">
+                    <datalist name="country" id="country" >
+                        <option value="Philippines">PH</option>
+                        <option value="India">IN</option>
+                        <option value="United States of America">USA</option>
+                        <option value="China">CN</option>
+                    </datalist> <br>
+                </fieldset>
+            </div>
+            
+            <div class="form2">
+                <fieldset>
+                    <legend>Hobbies</legend>
+                    <label>Sports:</label> <br>
+                    <input type="checkbox" name="sports" value="soccer">
+                    <label for="soccer">Soccer</label>
+                    <br>
+                    <input type="checkbox" name="sports" value="basketball">
+                    <label for="basketball">Basketball</label>
+                    <br>
+                    <input type="checkbox" name="sports" value="badminton">
+                    <label for="badminton">Badminton</label>
+                    <br>
+                    <input type="checkbox" name="sports" value="fps">
+                    <label for="fps">FPS</label>
+                    <br>
+                    <input type="checkbox" name="sports" value="moba">
+                    <label for="moba">MOBA</label>
+                    <br>
+                    <label for="other">Other:</label>
+                    <input type="text" name="other">
+                </fieldset>
+            </div>
+
+            <div class="form3">
+                <fieldset>
+                    <legend>Description</legend>
+                    <textarea name="description" id="description" cols="50" rows="10" placeholder="Enter your description"></textarea>
+                </fieldset>
+            </div>
+            <input type="submit" value="Submit" >
+        </form>
+    
+</body>
+</html>

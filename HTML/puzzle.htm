@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <style>
+        table tr td {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        .glyphicon {
+            font-size: 100px;
+            margin: 0 40px ;
+        }
+        .container {
+            text-align: center;
+        }
+        #icon2 {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        let player = 1;
+        function drag(ev) {
+            if (player === 1 && ev.target.id === "icon1" || player === 2 && ev.target.id === "icon2") {
+                ev.dataTransfer.setData("text", ev.target.id);
+            } else {
+                ev.preventDefault();
+            }
+            
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("text");
+            let draggedE = document.getElementById(data);
+            let clone = draggedE.cloneNode(true);
+            let targetCell = ev.target;
+
+            // Check if the cell is empty and is a table cell <td> and is not <tr>
+            if (!targetCell.hasChildNodes() && targetCell.tagName === 'TD') {
+                targetCell.appendChild(clone);
+                Check();
+                if (player === 1) {
+                    player = 2;
+                    document.getElementById("icon1").style.display = "none";
+                    document.getElementById("icon2").style.display = "inline-block";
+                } else {
+                    player = 1;
+                    document.getElementById("icon2").style.display = "none";
+                    document.getElementById("icon1").style.display = "inline-block";
+                }
+                
+            }
+        }
+
+        function Check () {
+            const c1 = document.getElementById("c1");
+            const c2 = document.getElementById("c2");
+            const c3 = document.getElementById("c3");
+            const c4 = document.getElementById("c4");
+            const c5 = document.getElementById("c5");
+            const c6 = document.getElementById("c6");
+            const c7 = document.getElementById("c7");
+            const c8 = document.getElementById("c8");
+            const c9 = document.getElementById("c9");
+            const i1 = document.getElementById("icon1").id;
+            const i2 = document.getElementById("icon2").id;
+
+            // 1 2 3
+            // 4 5 6
+            // 7 8 9
+            const winP = [
+                [c1, c2, c3],
+                [c4, c5, c6],
+                [c7, c8, c9],
+                [c1, c4, c7],
+                [c2, c5, c8],
+                [c3, c6, c9],
+                [c1, c5, c9],
+                [c3, c5, c7]
+            ];
+            
+            for (const p of winP) {
+                if (p.every(c => c.firstChild && c.firstChild.id === i1)) {
+                    alert("player 1 wins");
+                    reset();
+                } else if (p.every(c => c.firstChild && c.firstChild.id === i2)) {
+                    alert("player 2 wins");
+                    reset();
+                }
+            }
+            if (c1.firstChild && c2.firstChild && c3.firstChild && c4.firstChild && c5.firstChild && c6.firstChild && c7.firstChild && c8.firstChild && c9.firstChild) {
+                alert("Draw");
+                reset();
+            }
+            
+        }
+        function reset() {
+            location.reload();
+        }
+    </script>
+</body>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Puzzle</h1>
+    <div class="container">
+        <div id="icon1" class="glyphicon glyphicon-remove" draggable="true" onDragStart="drag(event)"></div>
+        <div id="icon2" class="glyphicon glyphicon-heart" draggable="true" onDragStart="drag(event)"></div>
+    </div>
+
+    <table>
+        <tr>
+            <td class="cells" id="c1" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c2" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c3" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+        </tr>
+        <tr>
+            <td class="cells" id="c4" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c5" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c6" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+        </tr>
+        <tr>
+            <td class="cells" id="c7" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c8" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+            <td class="cells" id="c9" onDrop="drop(event)" onDragOver="allowDrop(event)"></td>
+        </tr>
+    </table>
+</body>
+</html>

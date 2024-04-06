@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Calc</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+        }
+        th {
+            background-color: rgb(42, 204, 204);
+        }
+        .colors {
+            width: 50px;
+            height: 30px;
+        }
+        .read {
+            margin-left: 150px;
+        }
+        #read {
+            width: 500px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+        .container {
+            float: left;
+            border: solid 1px;
+            margin: 10px;
+            padding: 10px;
+            width: 50px;
+            height: 148px;
+        }
+        .selections {
+            float: left;
+            margin-left: 155px;
+            padding: 10px;
+            width: 470px;
+            background-color: gray;
+        }
+        .selectColor {
+            width: 50px;
+            height: 30px;
+            margin-left: 7.5%;
+        }
+        .selectColor option {
+            color: black;
+        }
+        .selectColor option[id="black"] {
+            background-color: black;
+        }
+        .selectColor option[id="brown"] {
+            background-color: brown;
+        }
+        .selectColor option[id="red"] {
+            background-color: red;
+        }
+        .selectColor option[id="orange"] {
+            background-color: orange;
+        }
+        .selectColor option[id="yellow"] {
+            background-color: yellow;
+        }
+        .selectColor option[id="green"] {
+            background-color: green;
+        }
+        .selectColor option[id="blue"] {
+            background-color: blue;
+        }
+        .selectColor option[id="violet"] {
+            background-color: violet;
+        }
+        .selectColor option[id="gray"] {
+            background-color: gray;
+        }
+        .selectColor option[id="white"] {
+            background-color: white;
+        }
+        .selectColor option[id="gold"] {
+            background-color: gold;
+        }
+        .selectColor option[id="silver"] {
+            background-color: silver;
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div class="table">
+        <table>
+            <caption style="font-weight: bold; font-size: 50px;">Resistor Color Code Table</caption>
+            <tr>
+                <th>Color</th>
+                <th>Color</th>
+                <th>1st Band</th>
+                <th>2nd Band</th>
+                <th>3rd Band</th>
+                <th>4th Band Multiplier</th>
+                <th>5th Band Tolerance</th>
+            </tr>
+
+            <tr>
+                <td>Black</td>
+                <td id="black" class= "colors " style="background-color: black;"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>x1</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Brown</td>
+                <td id="brown" class= "colors " style="background-color: brown;"></td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>x10</td>
+                <td>+=.1%</td>
+            </tr>
+
+            <tr>
+                <td>Red</td>
+                <td id="red" class= "colors " style="background-color: red;"></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>x100</td>
+                <td>+=.2%</td>
+            </tr>
+
+            <tr>
+                <td>Orange</td>
+                <td id="orange" class= "colors " style="background-color: orange;"></td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>x1k</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Yellow</td>
+                <td id="yellow" class= "colors " style="background-color: yellow;"></td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>x10k</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Green</td>
+                <td id="green" class= "colors " style="background-color: green;"></td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>x100k</td>
+                <td>+=.5%</td>
+            </tr>
+
+            <tr>
+                <td>Blue</td>
+                <td id="blue" class= "colors " style="background-color: blue;"></td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>x1M</td>
+                <td>+=.25%</td>
+            </tr>
+
+            <tr>
+                <td>Violet</td>
+                <td id="violet" class= "colors " style="background-color: violet;"></td>
+                <td>7</td>
+                <td>7</td>
+                <td>7</td>
+                <td>x10M</td>
+                <td>+=.10%</td>
+            </tr>
+
+            <tr>
+                <td>Gray</td>
+                <td id="gray" class= "colors " style="background-color: grey;"></td>
+                <td>8</td>
+                <td>8</td>
+                <td>8</td>
+                <td>x100M</td>
+                <td>+=.05%</td>
+            </tr>
+
+            <tr>
+                <td>White</td>
+                <td id="white" class= "colors " style="background-color: white"></td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>x1G</td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td>Gold</td>
+                <td id="gold" class= "colors " style="background-color: gold;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>x.1</td>
+                <td>+=5%</td>
+            </tr>
+
+            <tr>
+                <td>Silver</td>
+                <td id="silver" class= "colors " style="background-color: silver;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>x.01</td>
+                <td>+=10%</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class = 'read'>
+        <p id="read">
+            <span id="read1">1</span>
+            <span id="read2">1</span>
+            <span id="read3" style="margin-right: 20px;">1</span>
+            x
+            <span id="read4" style="margin-right: 20px;">1</span>
+            +=
+            <span id="read5">.1%</span>
+            <br>
+            <span id="res">Result: </span>
+        </p>
+
+    </div>
+    
+    <svg width="auto" height="170">
+        <rect 
+        id="svgContainer" 
+        x="155" y="20"
+        rx="20" ry="20"
+        width="500" height="150" 
+        fill="peachpuff" 
+        stroke="black" stroke-width="2"/>
+        <g id="colorZones">
+            <rect 
+            class="container" 
+            id="c1" 
+            x="200" y="21" 
+            />
+            <rect 
+            class="container" 
+            id="c2" 
+            x="290" y="21"  
+            />
+            <rect 
+            class="container" 
+            id="c3" 
+            x="380" y="21" 
+            /> 
+            <rect 
+            class="container" 
+            id="c4" 
+            x="470" y="21" 
+            />
+            <rect 
+            class="container" 
+            id="c5" 
+            x="560" y="21" 
+            fill="brown"
+            />
+        </g>
+        <!-- Left Lead -->
+        <rect 
+        x="82" y="80" 
+        width="70" height="20"
+        style="
+            fill:rgba(8, 8, 8, 0.979);
+            stroke:rgba(8, 8, 8, 0.979);
+            stroke-width:5;
+        " />
+        <!-- Right Lead -->
+        <rect 
+        x="657" y="80" 
+        width="70" height="20"
+        style="
+            fill:rgba(8, 8, 8, 0.979);
+            stroke:rgba(8, 8, 8, 0.979);
+            stroke-width:5;
+        " />
+    </svg>
+    <div class="selections">
+        <select name="color1" id="color1" class="selectColor">
+            <option id = "black" value="0">black </option>
+            <option id = "brown" value="1">brown</option>
+            <option id = "red" value="2">red</option>
+            <option id = "orange" value="3">orange</option>
+            <option id = "yellow" value="4">yellow</option>
+            <option id = "green" value="5">green</option>
+            <option id = "blue" value="6">blue</option>
+            <option id = "violet" value="7">violet</option>
+            <option id = "gray" value="8">gray</option>
+            <option id = "white" value="9">white</option>
+        </select>
+        <select name="color2" id="color2" class="selectColor">
+            <option id = "black" value="0">black</option>
+            <option id = "brown" value="1">brown</option>
+            <option id = "red" value="2">red</option>
+            <option id = "orange" value="3">orange</option>
+            <option id = "yellow" value="4">yellow</option>
+            <option id = "green" value="5">green</option>
+            <option id = "blue" value="6">blue</option>
+            <option id = "violet" value="7">violet</option>
+            <option id = "gray" value="8">gray</option>
+            <option id = "white" value="9">white</option>
+        </select>
+        <select name="color3" id="color3" class="selectColor">
+            <option id = "black" value="0">black</option>
+            <option id = "brown" value="1">brown</option>
+            <option id = "red" value="2">red</option>
+            <option id = "orange" value="3">orange</option>
+            <option id = "yellow" value="4">yellow</option>
+            <option id = "green" value="5">green</option>
+            <option id = "blue" value="6">blue</option>
+            <option id = "violet" value="7">violet</option>
+            <option id = "gray" value="8">gray</option>
+            <option id = "white" value="9">white</option>
+        </select>
+        <select name="color4" id="color4" class="selectColor">
+            <option id = "black" value="1">black</option>
+            <option id = "brown" value="10">brown</option>
+            <option id = "red" value="100">red</option>
+            <option id = "orange" value="1000">orange</option>
+            <option id = "yellow" value="10000">yellow</option>
+            <option id = "green" value="100000">green</option>
+            <option id = "blue" value="1000000">blue</option>
+            <option id = "violet" value="10000000">violet</option>
+            <option id = "gray" value="100000000">gray</option>
+            <option id = "white" value="1000000000">white</option>
+            <option id = "gold" value="0.1">gold</option>
+            <option id = "silver" value="0.01">silver</option>
+        </select>
+        <select name="color5" id="color5" class="selectColor" >
+            <option id = "brown" value=".1%">brown</option>
+            <option id = "red" value=".2%">red</option>
+            <option id = "green" value=".5%">green</option>
+            <option id = "blue" value=".25%">blue</option>
+            <option id = "violet" value=".10%">violet</option>
+            <option id = "gray" value=".05%">gray</option>
+            <option id = "gold" value="5%">gold</option>
+            <option id = "silver" value="10%">silver</option>
+        </select>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            //color select
+            let cs1 = document.getElementById("color1");
+            let cs2 = document.getElementById("color2");
+            let cs3 = document.getElementById("color3");
+            let cs4 = document.getElementById("color4");
+            let cs5 = document.getElementById("color5");
+            //color containers
+            let cc1 = document.getElementById("c1");
+            let cc2 = document.getElementById("c2");
+            let cc3 = document.getElementById("c3");
+            let cc4 = document.getElementById("c4");
+            let cc5 = document.getElementById("c5");
+            
+            cs1.addEventListener("change", function() {
+                cc1.style.fill = cs1[cs1.selectedIndex].id
+                document.getElementById("read1").innerHTML = cs1[cs1.selectedIndex].value
+                updateRes()
+            })
+            cs2.addEventListener("change", function() {
+                cc2.style.fill = cs2[cs2.selectedIndex].id
+                document.getElementById("read2").innerHTML = cs2[cs2.selectedIndex].value
+                updateRes()
+            })
+            cs3.addEventListener("change", function() {
+                cc3.style.fill = cs3[cs3.selectedIndex].id
+                document.getElementById("read3").innerHTML = cs3[cs3.selectedIndex].value
+                updateRes()
+            })
+            cs4.addEventListener("change", function() {
+                cc4.style.fill = cs4[cs4.selectedIndex].id
+                document.getElementById("read4").innerHTML = cs4[cs4.selectedIndex].value
+                updateRes()
+            })
+            cs5.addEventListener("change", function() {
+                cc5.style.fill = cs5[cs5.selectedIndex].id
+                document.getElementById("read5").innerHTML = cs5[cs5.selectedIndex].value
+                updateRes()
+            })
+            
+            const updateRes = () => {
+                let p = document.getElementById("read1").innerHTML +
+                    document.getElementById("read2").innerHTML +
+                    document.getElementById("read3").innerHTML +
+                    "*" +
+                    document.getElementById("read4").innerHTML ;
+                let r = "Result =  " + eval(p) + " += " + document.getElementById("read5").innerHTML
+                document.getElementById("res").innerHTML = r 
+
+            }
+        })
+    </script>
+</body>
+</html>
